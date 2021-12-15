@@ -1,6 +1,6 @@
 const express = require('express');
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const todoController = require('./contorllers/todoController');
 const server = express();
 
@@ -16,6 +16,7 @@ server.listen(4000, function(){
     mongoose.connect(mongo_db_url)
     .then (function(){
         console.log('DB is connected');
+        
     })
     .catch (function(error){
         console.log('DB is not connected:',error.message);
