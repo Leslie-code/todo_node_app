@@ -9,6 +9,13 @@ const server = express();
 
 server.use(express.json());
 
+server.get('/', function (req, res){
+    res.status(200).json({
+        success: true,
+        message: 'Welcome to my App',
+})
+})
+
 server.get('/todos',todoController.getAllTodos); 
 server.get('/todo/.id',todoController.getTodoById);
 server.post('/todo',todoController.insertTodo);
