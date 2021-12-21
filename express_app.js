@@ -9,19 +9,19 @@ const server = express();
 
 server.use(express.json());
 
+server.get('/todos',todoController.getAllTodos); 
+server.get('/todo/.id',todoController.getTodoById);
+server.post('/todo',todoController.insertTodo);
+server.put('/todos/.id', todoController.updateTodoById);
+server.delete('/todo',todoController.deleteTodoById);
+
 server.listen(PORT, function(){
     console.log('Server has started running in express');
     mongoose.connect(process.env.MONGO_DB_ATLAS)
     .then (function(){
         console.log('DB is connected');
-        server.get('/', function(req, res){
-            res.status(200).json({success: true, message: 'WELCOME, this is Bruce todo node App'})
-        })
-        server.get('/todos',todoController.getAllTodos); 
-        server.get('/todo/.id',todoController.getTodoById);
-        server.post('/todo',todoController.insertTodo);
-        server.put('/todos/.id', todoController.updateTodoById);
-        server.delete('/todo',todoController.deleteTodoById);
+        // server.get('/',)
+      
         
     })
     .catch (function(error){
